@@ -30,6 +30,13 @@ var result;
 const insertResult = document.querySelector('.playerwep');
 const replayButtons = document.querySelectorAll('#againbutton');
 const gameOver = document.querySelector('#gameover');
+//Winner weapon outlines
+const pinnerRing = document.querySelector('.inner-ring');
+const pouterRing = document.querySelector('.outer-ring');
+const pcenterRing = document.querySelector('#emptywep');
+const cinnerRing = document.querySelector('.inner-ring2');
+const couterRing = document.querySelector('.outer-ring2');
+const ccenterRing = document.querySelector('.emptywep2');
 
 function refresh(){
     window.location.reload();
@@ -45,6 +52,8 @@ function resetPage(){
     winner.style.display = "none";
     loser.style.display = "none";
     tier.style.display = "none";
+    resultContainer.style.display= "none";
+
     weapon.classList.remove('rockimage-wrapper');
     pimage.classList.remove('rockimage');
     weapon.classList.remove('paperimage-wrapper');
@@ -57,6 +66,13 @@ function resetPage(){
     cimage.classList.remove('paperimage')
     computerweapon.classList.remove('scissorsimage-wrapper');
     cimage.classList.remove('scissorsimage');
+
+    pcenterRing.classList.remove('crstyle');
+    pinnerRing.classList.remove('irstyle');
+    pouterRing.classList.remove('orstyle');
+    ccenterRing.classList.remove('crstyle');
+    cinnerRing.classList.remove('irstyle');
+    couterRing.classList.remove('orstyle');
 }
 function displayPlayerWep(){
     swapDivs();
@@ -96,14 +112,21 @@ function displayResult(){
     if(checkResult === "win"){
         winner.style.display = "block";
         resultContainer.style.display = "flex";
+        pcenterRing.classList.add('crstyle');
+        pinnerRing.classList.add('irstyle');
+        pouterRing.classList.add('orstyle');
     }
     else if(checkResult === "lose"){
         loser.style.display = "block";
         resultContainer.style.display = "flex";
+        ccenterRing.classList.add('crstyle');
+        cinnerRing.classList.add('irstyle');
+        couterRing.classList.add('orstyle');
     }
     else if(checkResult === "tie"){
         tier.style.display = "block";
         resultContainer.style.display = "flex";
+        
     }
     updateScore();
     

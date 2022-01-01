@@ -175,7 +175,7 @@ body{
     align-content:center;
     display:none;
 }
-.emptywep{
+#emptywep{
     width:25em;
     height:25em;
     background-color:hsla(237, 67%, 13%, 0.212);
@@ -184,6 +184,7 @@ body{
 }
 
 .weptext{
+    
     margin-top:10vh;
     justify-content:center;
     align-content:center;
@@ -235,7 +236,7 @@ body{
     justify-content: center;
     display:flex;
     padding:3em;
-    animation: drop 1.2s forwards;
+    animation: drop 0.8s forwards;
 }
 @keyframes drop{
     0%{opacity: 0}
@@ -251,7 +252,7 @@ body{
     justify-content: center;
     display:flex;
     padding:3em;
-    animation: drop 1.2s forwards;
+    animation: drop 0.8s forwards;
 }
 .paperimage-wrapper{
     background:linear-gradient(to bottom, $paper2,$paper1);
@@ -261,7 +262,7 @@ body{
     justify-content: center;
     display:flex;
     padding:3em;
-    animation: drop 1.2s forwards;
+    animation: drop 0.8s forwards;
 }
 .result{
     padding:2em;
@@ -331,4 +332,21 @@ button:hover{
     top:-5em;
     right:-10em;
     pointer-events:none;
+}
+// adding these classes with JS around the winners weapon(3 big outline rings with low opacity)
+.irstyle{
+    
+    outline:solid hsla(217, 16%, 45%, 0.144) 10em;
+    border-radius:50%;
+    position:relative;
+}
+.orstyle{
+    border-radius:50%;
+    outline:solid hsla(217, 16%, 45%, 0.027) 15em;
+    position:relative;
+}
+.crstyle{
+    outline:solid 5em hsla(217, 16%, 45%, 0.308);
+    border-radius:50%;
+    position:relative;
 }

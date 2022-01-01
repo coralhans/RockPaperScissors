@@ -239,7 +239,7 @@ body {
   display: none;
 }
 
-.emptywep {
+#emptywep {
   width: 25em;
   height: 25em;
   background-color: rgba(11, 13, 55, 0.212);
@@ -317,8 +317,8 @@ body {
   display: -ms-flexbox;
   display: flex;
   padding: 3em;
-  -webkit-animation: drop 1.2s forwards;
-          animation: drop 1.2s forwards;
+  -webkit-animation: drop 0.8s forwards;
+          animation: drop 0.8s forwards;
 }
 
 @-webkit-keyframes drop {
@@ -372,8 +372,8 @@ body {
   display: -ms-flexbox;
   display: flex;
   padding: 3em;
-  -webkit-animation: drop 1.2s forwards;
-          animation: drop 1.2s forwards;
+  -webkit-animation: drop 0.8s forwards;
+          animation: drop 0.8s forwards;
 }
 
 .paperimage-wrapper {
@@ -391,8 +391,8 @@ body {
   display: -ms-flexbox;
   display: flex;
   padding: 3em;
-  -webkit-animation: drop 1.2s forwards;
-          animation: drop 1.2s forwards;
+  -webkit-animation: drop 0.8s forwards;
+          animation: drop 0.8s forwards;
 }
 
 .result {
@@ -478,5 +478,23 @@ button:hover {
   top: -5em;
   right: -10em;
   pointer-events: none;
+}
+
+.irstyle {
+  outline: solid rgba(96, 110, 133, 0.144) 10em;
+  border-radius: 50%;
+  position: relative;
+}
+
+.orstyle {
+  border-radius: 50%;
+  outline: solid rgba(96, 110, 133, 0.027) 15em;
+  position: relative;
+}
+
+.crstyle {
+  outline: solid 5em rgba(96, 110, 133, 0.308);
+  border-radius: 50%;
+  position: relative;
 }
 /*# sourceMappingURL=main.css.map */
