@@ -1,13 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="app.js"></script>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="./styles/css/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="box">
+        <div class="row">
+          <div class="gametitle">
+            <img src="./assets/logo.svg" class="logo" />
+          </div>
+          <div class="scoreboard">
+            <div class="score-row">
+              <p class="scoretext">Player</p>
+              <p class="player_score">0</p>
+            </div>
+            <div class="score-row">
+              <p class="scoretext">House</p>
+              <p class="computer_score">0</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="buttons-container">
+      <div class="rock-wrapper">
+        <button id="playbutton" class="rock"></button>
+      </div>
+      <div class="paper-wrapper">
+        <button id="playbutton" class="paper"></button>
+      </div>
+      <div class="break"></div>
+      <div class="scissors-wrapper">
+        <button id="playbutton" class="scissors"></button>
+      </div>
+    </div>
+
+    <div class="battle">
+      <div class="playerwep">
+        <h1 class="weptext">you picked</h1>
+        <div class="outer-ring">
+          <div class="inner-ring">
+            <div class="emptywep" id="emptywep">
+              <div class="weapon"><div class="pweapon-image"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="result">
+        <div class="tie">
+          <h1>I'ts a tie</h1>
+          <button id="againbutton" class="winbutton">play again</button>
+        </div>
+
+        <div class="loss">
+          <h1>you lose</h1>
+          <button id="againbutton" class="losebutton">play again</button>
+        </div>
+        <div class="win">
+          <div class="svg hide" id="svg"></div>
+
+          <h1>you won</h1>
+          <button id="againbutton" class="winbutton">play again</button>
+        </div>
+      </div>
+      <div class="computerwep">
+        <h1 class="weptext">the house picked</h1>
+        <div class="outer-ring2">
+          <div class="inner-ring2">
+            <div class="emptywep2" id="emptywep">
+              <div class="computerweapon">
+                <div class="cweapon-image"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button id="modalButton">Rules</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="rulesrow">
+          <p class="rulestext">Rules</p>
+          <button class="closebutton">
+            <img src="assets/icon-close.svg" id="close" />
+          </button>
+        </div>
+
+        <img src="./assets/image-rules.svg" />
+      </div>
+    </div>
+  </body>
 </html>
+<footer>
+  <script src="app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.8.1/lottie.min.js"></script>
+  <script>
+    const svgContainer = document.getElementById("svg");
+    const animItem = bodymovin.loadAnimation({
+      wrapper: svgContainer,
+      animType: "svg",
+      loop: false,
+      autoplay: false,
+      path: "https://assets2.lottiefiles.com/packages/lf20_obhph3sh.json",
+    });
+  </script>
+</footer>
