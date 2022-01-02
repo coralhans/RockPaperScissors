@@ -125,7 +125,7 @@ function updateScore() {
   pScore.innerHTML = playerScore;
   cScore.innerHTML = computerScore;
 
-  if (playerScore === 1) {
+  if (playerScore === 5) {
     winner.insertAdjacentHTML(
       "beforebegin",
       `<div class="gameover"><h1>game over</h1></div>`
