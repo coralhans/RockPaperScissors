@@ -164,10 +164,10 @@ buttons.forEach((button) => {
     displayPlayerWep();
     setTimeout(() => {
       displayComputerWep();
-    }, 1500);
+    }, 1000);
     setTimeout(() => {
       displayResult();
-    }, 3000);
+    }, 2000);
   });
 });
 
