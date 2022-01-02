@@ -1,352 +1,608 @@
-@import './resets', './variables';
+@import "./resets", "./variables";
 
-@function weight($weight-name){
-    @return map-get($font-weights,$weight-name)
-};
-
-body{
-    font-family:'Barlow Semi Condensed';
-    background:$bggrad;
-    height:100vh;
-}
-.row{
-    display:flex;
-    justify-content: space-between;
-    margin:0.6em;
-}
-.score-row{
-    display:flex;
-    flex-direction: column;
-    row-gap:1em;
-    margin-left:0.4em;
-    align-items:center;
-}
-.box{
-
-    margin:0 auto;
-    margin-top:2em;
-    padding:1em;
-    line-height:1.5em;
-    width:50%;
-    border:$headeroutl 0.2em solid;
-    border-radius:0.6em; 
-}
-.scoreboard{
-    display:flex;
-    background-color:white;
-    border-radius:0.6em;
-    padding:1em;
-
-}
-.scoretext{
-    font-size:1.4rem;
-    color:$scoretext;
-    text-transform: uppercase;
-}
-.player_score{
-    font-size:3rem;
-    color:$darktext;
-}
-.computer_score{
-    @extend .player_score;
-}
-.buttons-container{
-    
-    background-image:url("../../assets/bg-triangle.svg");
-    background-repeat:no-repeat;
-    background-position:50% 50%;
-    background-size: 20%;
-    display:flex;
-    justify-content:center;
-    margin-top:10vh;
-    flex-wrap:wrap;
-    column-gap:10em;
-    row-gap:4em;
-}
-.break{
-    flex-basis: 100%;
-    width:0;
+@function weight($weight-name) {
+  @return map-get($font-weights, $weight-name);
 }
 
-#playbutton{
-    margin:2em;
-    padding:5em;
-    border-radius:50%;
-    border:none;
-    box-shadow: rgb(200, 195, 195) 0px 6px 0px 2px inset;
+body {
+  font-family: "Barlow Semi Condensed";
+  background: $bggrad;
+  overflow-x: hidden;
 }
-.scissors{
-    background-image:url("./../../assets/icon-scissors.svg");
-    background-position: center;
-    background-repeat: no-repeat;
+.logo {
+  width: 8em;
 }
-.rock{
-    background-image:url("./../../assets/icon-rock.svg");
-    background-position: center;
-    background-repeat: no-repeat;
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.6em;
+}
+.score-row {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  margin-left: 0.4em;
+  align-items: center;
+}
+.box {
+  margin: 0 auto;
+  margin-top: 2em;
+  padding: 0.6em;
+  line-height: 0.8em;
+  width: 90%;
+  border: $headeroutl 0.2em solid;
+  border-radius: 0.6em;
+}
+.scoreboard {
+  display: flex;
+  background-color: white;
+  border-radius: 0.4em;
+  padding: 1em;
+}
+.scoretext {
+  font-size: 1rem;
+  color: $scoretext;
+  text-transform: uppercase;
+}
+.player_score {
+  font-size: 2rem;
+  color: $darktext;
+}
+.computer_score {
+  @extend .player_score;
+}
+.buttons-container {
+  background-image: url("../../assets/bg-triangle.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 55%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+  flex-wrap: wrap;
+  column-gap: 5em;
+  row-gap: 2em;
+}
+.break {
+  flex-basis: 100%;
+  width: 0;
 }
 
-.paper{
-    background-image:url("./../../assets/icon-paper.svg");
-    background-position: center;
-    background-repeat: no-repeat;
+#playbutton {
+  margin: 1.4em;
+  padding: 3em;
+  border-radius: 50%;
+  border: none;
+  box-shadow: rgb(200, 195, 195) 0px 3px 0px 2px inset;
+}
+.scissors {
+  background-image: url("./../../assets/icon-scissors.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40%;
+}
+.rock {
+  background-image: url("./../../assets/icon-rock.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40%;
+}
 
+.paper {
+  background-image: url("./../../assets/icon-paper.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40%;
 }
-.rock-wrapper{
-    background:linear-gradient(to bottom, $rock2, $rock1);
-    border-radius:50%;
-    box-shadow: rgba(156, 9, 36, 0.815) 0 -12px 2px 2px inset;
+.rock-wrapper {
+  background: linear-gradient(to bottom, $rock2, $rock1);
+  border-radius: 50%;
+  box-shadow: rgba(156, 9, 36, 0.815) 0 -6px 2px 2px inset;
 }
-.paper-wrapper{
-    background:linear-gradient(to bottom, $paper2,$paper1);
-    border-radius:50%;
-    box-shadow: hsl(230, 77%, 44%) 0 -5px 2px 2px inset;
+.paper-wrapper {
+  background: linear-gradient(to bottom, $paper2, $paper1);
+  border-radius: 50%;
+  box-shadow: hsl(230, 77%, 44%) 0 -6px 2px 2px inset;
 }
-.scissors-wrapper{
-    background:linear-gradient(to bottom, $scissors2,$scissors1);
-    border-radius:50%;
-    box-shadow: hsl(39, 87%, 37%) 0 -7px 2px 2px inset;
-    
+.scissors-wrapper {
+  background: linear-gradient(to bottom, $scissors2, $scissors1);
+  border-radius: 50%;
+  box-shadow: hsl(39, 87%, 37%) 0 -6px 2px 2px inset;
 }
-.modal{
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow-x: hidden; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto; /* 15% from the top and centered */
-    padding: 30px;
-    width: fit-content;
-    border-radius:0.6em;
-  }
-.closebutton{
-    border:none;
-    background-color:white;
-    font-size:2.1rem;
+  background-color: #fefefe;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 30px;
+  width: fit-content;
+  border-radius: 0.6em;
 }
-.rulesrow{
-    display:flex;
-    justify-content: space-between;
-    margin-bottom:2em;
+.closebutton {
+  border: none;
+  background-color: white;
+  font-size: 2.1rem;
 }
-.rulestext{
-    font-size:2.1rem;
-    color:$darktext;
+.rulesrow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
 }
-#close{
-    color:black;
+.rulestext {
+  font-size: 2.1rem;
+  color: $darktext;
+}
+#close {
+  color: black;
 }
 
 #close:hover,
 #close:focus {
   cursor: pointer;
 }
-#modalButton{
-    padding:0.6em;
-    color:white;
-    background-color:transparent;
-    border:0.1em solid white;
-    width:10em;
-    border-radius:0.6em;
-    font-family:inherit;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    position:relative;
-    left:84%;
-    font-size:1.3rem;
+#modalButton {
+  padding: 0.6em;
+  color: white;
+  background-color: transparent;
+  border: 0.1em solid white;
+  border-radius: 0.6em;
+  font-family: inherit;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 10vh;
+  margin-bottom: 1em;
 }
-#modalButton:hover{
-    cursor:pointer;
-    background-color:white;
-    color:$darktext;
+#modalButton:hover {
+  cursor: pointer;
+  background-color: white;
+  color: $darktext;
 }
-.battle{
-    display:flex;
-    justify-content:center;
-    column-gap: 5em;
-    align-content:center;
-    display:none;
+.battle {
+  justify-content: center;
+  column-gap: 1em;
+  align-content: center;
+  display: none;
+  flex-wrap: wrap;
+  margin-left: 0;
 }
-#emptywep{
-    width:25em;
-    height:25em;
-    background-color:hsla(237, 67%, 13%, 0.212);
-    border-radius:50%;
-    position:relative;  
+.computerwep {
+  order: 2;
 }
-
-.weptext{
-    
-    margin-top:10vh;
-    justify-content:center;
-    align-content:center;
-    display:flex;
-    margin-bottom:2em;
-    text-transform: uppercase;
-    color:#fff;
-    letter-spacing:0.2em;
-}
-.rockimage{
-    background-image:url("./../../assets/icon-rock.svg");
-    background-position: center;
-    background-size:30%;
-    background-repeat: no-repeat;
-    background-color:white;
-    height:20em;
-    width:20em;
-    border-radius:50%;
-    box-shadow: rgb(200, 195, 195) 0px 12px 0px 2px inset;
-}
-.scissorsimage{
-    background-image:url("./../../assets/icon-scissors.svg");
-    background-position: center;
-    background-size:30%;
-    background-repeat: no-repeat;
-    background-color:white;
-    height:20em;
-    width:20em;
-    border-radius:50%;
-    box-shadow: rgb(200, 195, 195) 0px 12px 0px 2px inset;
-}
-.paperimage{
-    background-image:url("./../../assets/icon-paper.svg");
-    background-position: center;
-    background-size:30%;
-    background-repeat: no-repeat;
-    background-color:white;
-    height:20em;
-    width:20em;
-    border-radius:50%;
-    box-shadow: rgb(200, 195, 195) 0px 12px 0px 2px inset;
+#emptywep {
+  width: 8em;
+  height: 8em;
+  background-color: hsla(237, 67%, 13%, 0.212);
+  border-radius: 50%;
+  position: relative;
 }
 
-.rockimage-wrapper{
-    background:linear-gradient(to bottom, $rock2,$rock1);
-    border-radius:50%;
-    box-shadow: rgba(156, 9, 36, 0.815) 0 -12px 2px 2px inset;
-    align-content:center;
-    justify-content: center;
-    display:flex;
-    padding:3em;
-    animation: drop 0.8s forwards;
+.weptext {
+  margin-top: 5vh;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  margin-bottom: 2em;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0.2em;
 }
-@keyframes drop{
-    0%{opacity: 0}
-    0%{transform:translateY(-500px)}
-    70%{transform: translateY(20px)}
-    100%{transform: translateY(0px)}
+.rockimage {
+  background-image: url("./../../assets/icon-rock.svg");
+  background-position: center;
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-color: white;
+  height: 6em;
+  width: 6em;
+  border-radius: 50%;
+  box-shadow: rgb(200, 195, 195) 0px 6px 0px 2px inset;
+}
+.scissorsimage {
+  background-image: url("./../../assets/icon-scissors.svg");
+  background-position: center;
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-color: white;
+  height: 6em;
+  width: 6em;
+  border-radius: 50%;
+  box-shadow: rgb(200, 195, 195) 0px 6px 0px 2px inset;
+}
+.paperimage {
+  background-image: url("./../../assets/icon-paper.svg");
+  background-position: center;
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-color: white;
+  height: 6em;
+  width: 6em;
+  border-radius: 50%;
+  box-shadow: rgb(200, 195, 195) 0px 6px 0px 2px inset;
+}
+
+.rockimage-wrapper {
+  background: linear-gradient(to bottom, $rock2, $rock1);
+  border-radius: 50%;
+  box-shadow: rgba(156, 9, 36, 0.815) 0 -6px 2px 2px inset;
+  display: flex;
+  padding: 1em;
+  animation: drop 0.8s forwards;
+}
+@keyframes drop {
+  0% {
+    opacity: 0;
   }
-.scissorsimage-wrapper{
-    background:linear-gradient(to bottom, $scissors2,$scissors1);
-    border-radius:50%;
-    box-shadow: hsl(39, 87%, 37%) 0 -12px 2px 2px inset;
-    align-content:center;
-    justify-content: center;
-    display:flex;
-    padding:3em;
-    animation: drop 0.8s forwards;
+  0% {
+    transform: translateY(-500px);
+  }
+  70% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
-.paperimage-wrapper{
-    background:linear-gradient(to bottom, $paper2,$paper1);
-    border-radius:50%;
-    box-shadow: hsl(230, 77%, 44%) 0 -12px 2px 2px inset;
-    align-content:center;
-    justify-content: center;
-    display:flex;
-    padding:3em;
-    animation: drop 0.8s forwards;
+.scissorsimage-wrapper {
+  background: linear-gradient(to bottom, $scissors2, $scissors1);
+  border-radius: 50%;
+  box-shadow: hsl(39, 87%, 37%) 0 -6px 2px 2px inset;
+  display: flex;
+  padding: 1em;
+  animation: drop 0.8s forwards;
 }
-.result{
-    padding:2em;
-    text-transform: uppercase;
-    display:flex;
-    justify-content: center;
-    margin-top:30vh;
-    animation: drop 0.8s forwards;
+.paperimage-wrapper {
+  background: linear-gradient(to bottom, $paper2, $paper1);
+  border-radius: 50%;
+  box-shadow: hsl(230, 77%, 44%) 0 -6px 2px 2px inset;
+  display: flex;
+  padding: 1em;
+  animation: drop 0.8s forwards;
+}
+.result {
+  padding: 1em;
+  text-transform: uppercase;
+  margin-top: 10vh;
+  animation: drop 0.8s forwards;
+  order: 3;
+  display: flex;
+  flex-direction: column;
 }
 
-.result h1{
-    font-size:4rem;
-    color:white;
-    margin-bottom:0.4em;
+.result h1 {
+  font-size: 4rem;
+  color: white;
+  margin-bottom: 0.4em;
+  text-align: center;
 }
-.losebutton{
-    padding:0.6em;
-    color:$rock1;
-    background-color:white;
-    border:none;
-    width:13em;
-    border-radius:0.4em;
-    font-family:inherit;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-size:1.2rem;
+.losebutton {
+  padding: 0.6em;
+  color: $darktext;
+  background-color: white;
+  border: none;
+  border-radius: 0.4em;
+  font-family: inherit;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
 }
-.winbutton{
-    @extend .losebutton;
-    color:$scoretext;
+.winbutton {
+  @extend .losebutton;
 }
-button:hover{
-    cursor:pointer;
-    transform:translateY(-0.20em);
-    box-shadow: 0 0.5em 0.5em -0.4em (adjust-hue(hsl(0, 0%, 0%), $degrees:45));
+.losebutton:hover {
+  color: $rock1;
 }
-.rock-wrapper:hover{
-    transform:translateY(-0.2em);
+.winbutton:hover {
+  color: $scoretext;
 }
-.paper-wrapper:hover{
-    transform:translateY(-0.2em);
+button:hover {
+  cursor: pointer;
+  transform: translateY(-0.2em);
+  box-shadow: 0 0.5em 0.5em -0.4em (adjust-hue(hsl(0, 0%, 0%), $degrees: 45));
 }
-.scissors-wrapper:hover{
-    transform:translateY(-0.2em);
+.rock-wrapper:hover {
+  transform: translateY(-0.2em);
 }
-.win,.tie,.loss,.result{
-    display:none;
+.paper-wrapper:hover {
+  transform: translateY(-0.2em);
 }
-.gameover{
-    margin-top:2em;
-    margin-bottom:4em;
+.scissors-wrapper:hover {
+  transform: translateY(-0.2em);
+}
+.win,
+.tie,
+.loss,
+.result {
+  display: none;
+}
 
-   &.gameover h1{
-       color:$scoretext;
-    }
-}
-.gameover2{
-    @extend .gameover;
+.gameover {
+  margin-top: 2em;
+  margin-bottom: 2em;
 
-    &.gameover2 h1{
-        color:$rock1;
-    }
+  &.gameover h1 {
+    color: $scoretext;
+  }
 }
-#svg{
-    position:absolute;
-    width:800px;
-    top:-5em;
-    right:-10em;
-    pointer-events:none;
+.gameover2 {
+  @extend .gameover;
+
+  &.gameover2 h1 {
+    color: $rock1;
+  }
 }
+#svg {
+  width: fit-content;
+  position: absolute;
+  top: -20%;
+  pointer-events: none;
+}
+.outer-ring2 {
+  width: fit-content;
+  margin-left: 12%;
+  margin-right: 12%;
+}
+
 // adding these classes with JS around the winners weapon(3 big outline rings with low opacity)
-.irstyle{
-    
-    outline:solid hsla(217, 16%, 45%, 0.144) 10em;
-    border-radius:50%;
-    position:relative;
+.irstyle {
+  outline: solid hsla(217, 16%, 45%, 0.055) 4em;
+  border-radius: 50%;
+  position: relative;
 }
-.orstyle{
-    border-radius:50%;
-    outline:solid hsla(217, 16%, 45%, 0.027) 15em;
-    position:relative;
+.orstyle {
+  border-radius: 50%;
+  outline: solid hsla(217, 16%, 45%, 0.15) 2.5em;
+  position: relative;
 }
-.crstyle{
-    outline:solid 5em hsla(217, 16%, 45%, 0.308);
-    border-radius:50%;
-    position:relative;
+.crstyle {
+  outline: solid 1em hsla(217, 16%, 45%, 0.137);
+  border-radius: 50%;
+  position: relative;
+}
+@media screen and (min-width: 33em) {
+  .scissorsimage-wrapper,
+  .rockimage-wrapper,
+  .paperimage-wrapper {
+    padding: 2em;
+  }
+  .scissorsimage,
+  .rockimage,
+  .paperimage {
+    background-size: 50%;
+    height: 7em;
+    width: 7em;
+  }
+  #emptywep {
+    height: 11em;
+    width: 11em;
+  }
+  .scissors,
+  .rock,
+  .paper {
+    background-size: 50%;
+  }
+  .buttons-container {
+    background-size: 42%;
+  }
+  #playbutton {
+    margin: 2em;
+    padding: 4em;
+  }
+  .battle {
+    column-gap: 5em;
+    flex-wrap: wrap;
+    margin-left: 0;
+  }
+  .weptext {
+    font-size: 1.5rem;
+  }
+
+  #modalButton {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+  .computerwep {
+    order: 2;
+  }
+}
+
+@media screen and (min-width: 53.5em) {
+  .box {
+    width: 50%;
+  }
+  .scissorsimage-wrapper,
+  .rockimage-wrapper,
+  .paperimage-wrapper {
+    padding: 3em;
+  }
+  .scissorsimage,
+  .rockimage,
+  .paperimage {
+    background-size: 50%;
+    height: 15em;
+    width: 15em;
+  }
+  #emptywep {
+    height: 20em;
+    width: 20em;
+  }
+  .scissors,
+  .rock,
+  .paper {
+    background-size: 45%;
+  }
+  .buttons-container {
+    background-size: max($numbers: 30%);
+    column-gap: 5em;
+  }
+  #playbutton {
+    padding: 6em;
+  }
+  .battle {
+    column-gap: 12em;
+    flex-wrap: wrap;
+  }
+  .computerwep {
+    order: 2;
+  }
+  .weptext {
+    font-size: 2rem;
+  }
+  .logo {
+    width: 100%;
+  }
+
+  .scoretext {
+    font-size: 1.4rem;
+  }
+  .score-row {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  .player_score {
+    font-size: 3rem;
+  }
+  .box {
+    line-height: 1em;
+    padding: 1em;
+  }
+  #modalButton {
+    font-size: 1.3rem;
+    width: 15%;
+    margin-left: 75%;
+    margin-right: 5%;
+    position: relative;
+  }
+  .losebutton {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1em;
+  }
+  .irstyle {
+    outline: solid hsla(217, 16%, 45%, 0.055) 6em;
+    border-radius: 50%;
+    position: relative;
+  }
+  .orstyle {
+    border-radius: 50%;
+    outline: solid hsla(217, 16%, 45%, 0.15) 9em;
+    position: relative;
+  }
+  .crstyle {
+    outline: solid 3em hsla(217, 16%, 45%, 0.137);
+    border-radius: 50%;
+    position: relative;
+  }
+  .outer-ring,
+  .outer-ring2 {
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 82em) {
+  .box {
+    width: 40%;
+  }
+  .scissorsimage-wrapper,
+  .rockimage-wrapper,
+  .paperimage-wrapper {
+    padding: 3em;
+  }
+
+  .scissorsimage,
+  .rockimage,
+  .paperimage {
+    background-size: 30%;
+    height: 17em;
+    width: 17em;
+    box-shadow: rgb(200, 195, 195) 0px 12px 0px 2px inset;
+  }
+  .scissorsimage-wrapper {
+    box-shadow: hsl(39, 87%, 37%) 0 -12px 2px 2px inset;
+  }
+  .rockimage-wrapper {
+    box-shadow: rgba(156, 9, 36, 0.815) 0 -12px 2px 2px inset;
+  }
+  .paperimage-wrapper {
+    box-shadow: hsl(230, 77%, 44%) 0 -12px 2px 2px inset;
+  }
+  .rock-wrapper {
+    box-shadow: rgba(156, 9, 36, 0.815) 0 -12px 2px 2px inset;
+  }
+  .scissors-wrapper {
+    box-shadow: hsl(39, 87%, 37%) 0 -12px 2px 2px inset;
+  }
+  .paper-wrapper {
+    box-shadow: hsl(230, 77%, 44%) 0 -12px 2px 2px inset;
+  }
+  #emptywep {
+    height: 23em;
+    width: 23em;
+  }
+  .buttons-container {
+    background-size: max($numbers: 20%);
+    column-gap: 8em;
+    margin-top: 5vh;
+  }
+  #playbutton {
+    box-shadow: rgb(200, 195, 195) 0px 6px 0px 2px inset;
+  }
+  .weptext {
+    margin-top: 10vh;
+    margin-bottom: 2em;
+  }
+  .battle {
+    flex-wrap: none;
+    column-gap: 5em;
+  }
+  .result {
+    margin-top: 30vh;
+  }
+  .computerwep {
+    order: 3;
+  }
+  #modalButton {
+    font-size: 1.3rem;
+    width: 12%;
+    margin-left: 81%;
+    margin-right: 7%;
+    position: relative;
+    margin-top: 5vh;
+  }
+
+  .irstyle {
+    outline: solid hsla(217, 16%, 45%, 0.055) 10em;
+    border-radius: 50%;
+    position: relative;
+  }
+  .orstyle {
+    border-radius: 50%;
+    outline: solid hsla(217, 16%, 45%, 0.15) 15em;
+    position: relative;
+  }
+  .crstyle {
+    outline: solid 5em hsla(217, 16%, 45%, 0.137);
+    border-radius: 50%;
+    position: relative;
+  }
 }
