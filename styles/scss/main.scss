@@ -354,6 +354,10 @@ button:hover {
   top: -20%;
   pointer-events: none;
 }
+.outer-ring2,.outer-ring{
+  z-index:-1;
+
+}
 .outer-ring2 {
   width: fit-content;
   margin-left: 12%;
