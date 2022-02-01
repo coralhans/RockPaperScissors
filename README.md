@@ -1,5 +1,8 @@
 # RockPaperScissors
 Rock Paper Scissors Game VS AI
+
+<br/>
+Made using HTML, SCSS & JS
 <br/>
 Live Page: https://coralhans.github.io/RockPaperScissors/
 <br/>
