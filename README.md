@@ -2,6 +2,7 @@
 Rock Paper Scissors Game VS AI
 <br/>
 This was made as part of TOP(The Odin Project) curriculum.
+<br/>
 Design taken from FrontEndMentor.
 <br/>
 Made using:HTML, SCSS & JS
